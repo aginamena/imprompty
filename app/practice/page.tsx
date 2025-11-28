@@ -5,6 +5,7 @@ import { RealtimeAgent, RealtimeSession, tool } from "@openai/agents/realtime";
 import Image from "next/image";
 import { useRef, useState } from "react";
 import { z } from "zod";
+import Link from "next/link";
 
 import { prompt } from "./prompt";
 
@@ -126,8 +127,17 @@ export default function Practice() {
       >
         We’re currently building out the full AI impromptu coach. For now,{" "}
         <strong>you have access to our beta coach </strong>. If you’d like
-        access to the full coach, please fill out this form and we’ll contact
-        you for you to practice more sessions.
+        access to the full coach, please fill out this{" "}
+        <span
+          style={{
+            color: "yellow",
+            fontWeight: "bold",
+            textDecoration: "underline",
+          }}
+        >
+          <Link href="https://forms.gle/45YkPR6LPG7r3LycA">form</Link>
+        </span>{" "}
+        and we’ll contact you for you to practice more sessions.
       </Typography>
 
       {/* IMAGE + LABEL */}
