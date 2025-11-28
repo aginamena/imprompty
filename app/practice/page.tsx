@@ -1,6 +1,13 @@
 "use client";
 
-import { Button, Container, Paper, Stack, Typography } from "@mui/material";
+import {
+  Button,
+  Container,
+  Paper,
+  Stack,
+  Typography,
+  Box,
+} from "@mui/material";
 import { RealtimeAgent, RealtimeSession, tool } from "@openai/agents/realtime";
 import Image from "next/image";
 import { useRef, useState } from "react";
@@ -214,6 +221,36 @@ export default function Practice() {
           Stop Session
         </Button>
       </Stack>
+      <Box sx={{ mt: 10, textAlign: "center" }}>
+        <Typography
+          variant="h5"
+          fontWeight={600}
+          gutterBottom
+          sx={{ fontSize: { xs: "1.4rem", md: "1.8rem" } }}
+        >
+          Move from uncertainty to confidence:
+        </Typography>
+
+        <Stack
+          spacing={1}
+          sx={{ opacity: 0.9, fontSize: { xs: "1rem", md: "1.1rem" } }}
+        >
+          <Typography>
+            ❌ “I don’t know what to say.” → ✅ “I can structure my response
+            instantly.”
+          </Typography>
+          <Typography>
+            ❌ “My mind goes blank.” → ✅ “I stay calm and think clearly.”
+          </Typography>
+          <Typography>
+            ❌ “I ramble and lose my point.” → ✅ “I speak logically and
+            concisely.”
+          </Typography>
+          <Typography>
+            ❌ “I feel nervous.” → ✅ “I sound confident and prepared.”
+          </Typography>
+        </Stack>
+      </Box>
     </Container>
   );
 }
