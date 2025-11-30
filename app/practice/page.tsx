@@ -50,7 +50,8 @@ export default function Practice() {
     session.current = new RealtimeSession(agent, {
       model: "gpt-realtime-mini",
     });
-    const client_secrets = await getClientSecret();
+    const request = await fetch("api/client_secrets");
+    const { client_secrets } = await request.json();
     try {
       await session.current.connect({
         apiKey: client_secrets,
@@ -65,28 +66,6 @@ export default function Practice() {
     }
   }
 
-  async function getClientSecret() {
-    const resp = await fetch(
-      "https://api.openai.com/v1/realtime/client_secrets",
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${process.env.NEXT_PUBLIC_OPENAI_API_KEY}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          session: {
-            type: "realtime",
-            model: "gpt-realtime-mini",
-          },
-        }),
-      }
-    );
-
-    const json = await resp.json();
-    return json.value;
-  }
-
   async function stop() {
     session.current?.close();
   }
@@ -98,8 +77,8 @@ export default function Practice() {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        textAlign: "center", // Center text content
-        maxWidth: "700px !important", // Limit page width for clean layout
+        textAlign: "center",
+        maxWidth: "700px !important",
       }}
     >
       {/* HEADER */}
